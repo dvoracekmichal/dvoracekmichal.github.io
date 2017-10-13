@@ -1,0 +1,116 @@
+---
+---
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: deepskyblue;
+}
+
+@keyframes slideLeft {
+  0% {
+    -webkit-transform: translateX(50%) scale(0);
+  }
+  50% {
+    -webkit-transform: translateX(50%) scale(1);
+  }
+  100% {
+    -webkit-transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    -webkit-transform: translateX(-50%) scale(0);
+  }
+  50% {
+    -webkit-transform: translateX(-50%) scale(1);
+  }
+  100% {
+    -webkit-transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flewToMenu {
+  0% {
+    transform: skewX(-10deg) translateX(0) translateY(0);
+  }
+  100% {
+    transform: skewX(-10deg) translateX(calc(-50vw + 55%)) translateY(calc(-50vh + 55%));
+  }
+}
+
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.1);
+  }
+}
+
+.intro {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .logo-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //animation: shrink ease-out 1s 2s forwards;
+
+    .intro-logo {
+      position: relative;
+      animation: flewToMenu ease-out 1s 2s forwards;
+      transform: skewX(-10deg);
+
+      .intro-corners {
+        max-width: 40vw;
+        max-height: 45vh;
+
+        &.left-corner {
+          animation: slideLeft ease-out 2s;
+        }
+
+        &.right-corner {
+          animation: slideRight ease-out 2s;
+        }
+      }
+
+      .intro-letters {
+        position: absolute;
+        max-width: 25vw;
+        max-height: 30vh;
+        top: 15%;
+
+        animation: fadeIn ease-out 2s;
+
+        &.letter {
+          left: 22.5%;
+        }
+      }
+    }
+  }
+}
